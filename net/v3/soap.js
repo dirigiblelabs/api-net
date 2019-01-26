@@ -9,8 +9,8 @@
  *   SAP - initial API and implementation
  */
 
-var streams = require("io/v3/streams");
-var request = require('http/request');
+var streams = require("net/v3/streams");
+var request = require('http/v3/request');
 
 exports.createMessage = function() {
 	var internalFactory = javax.xml.soap.MessageFactory.newInstance();
