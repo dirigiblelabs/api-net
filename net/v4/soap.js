@@ -11,6 +11,7 @@
 
 var streams = require("io/v4/streams");
 var request = require('http/v4/request');
+var base64 = require("utils/v4/base64");
 
 exports.createMessage = function() {
 	var internalFactory = javax.xml.soap.MessageFactory.newInstance();
@@ -39,8 +40,8 @@ exports.parseRequest = function() {
 		throw new Error("HTTP method used must be POST.");	
 	}
 
-	var inputStream = request.getInput();
-	var mimeHeaders = exports.createMimeHeaders();
+	var inputStream = request.getInputStream();
+	var mimeHeaders = {};//exports.createMimeHeaders();
 	return exports.parseMessage(mimeHeaders, inputStream);
 };
 
@@ -100,6 +101,12 @@ function MimeHeaders(internalMimeHeaders) {
 
 	this.addHeader = function(name, value) {
 		this.internalMimeHeaders.addHeader(name, value);
+	};
+
+	this.addBasicAuthenticationHeader = function(username, password) {
+		var userAndPassword = `${username}:${password}`;
+		var basicAuth = base64.encode(userAndPassword);
+		this.internalMimeHeaders.addHeader("Authorization", "Basic " + basicAuth);
 	};
 }
 
