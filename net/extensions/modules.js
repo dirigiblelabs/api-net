@@ -12,5 +12,8 @@ exports.getContent = function() {
 	return [{
 		name: "net/v4/soap",
 		description: "SOAP API"
+	}, {
+		name: "net/v4/websockets",
+		description: "Websockets API"
 	}];
 };
