@@ -8,7 +8,7 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-var websockets = require('net/v4/websockets');
-for(var propertyName in websockets) {
+const websockets = require('net/v4/websockets');
+for(const propertyName in websockets) {
 	exports[propertyName] = websockets[propertyName];
 }

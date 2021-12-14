@@ -8,7 +8,7 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-var soap = require('net/v4/soap');
-for(var propertyName in soap) {
+const soap = require('net/v4/soap');
+for(const propertyName in soap) {
 	exports[propertyName] = soap[propertyName];
 }

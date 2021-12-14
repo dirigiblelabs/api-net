@@ -9,7 +9,7 @@
  *   SAP - initial API and implementation
  */
 exports.getSoap = function() {
-	var soap = require('net/v4/soap');
+	const soap = require('net/v4/soap');
 	return soap;
 };
 
